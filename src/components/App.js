@@ -16,15 +16,21 @@ export class App extends React.Component {
     if (this.state.good === 0) return 0;
     return 100 * (this.state.good / this.totalStatsQuantisty());
   };
-  onClick = (evt, value) => {
+  onClick = evt => {
     if (evt.target.textContent === 'Good') {
-      this.setState({ good: (this.state.good += value) });
+      this.setState(state => ({
+        good: state.good + 1,
+      }));
     }
     if (evt.target.textContent === 'Neutral') {
-      this.setState({ neutral: (this.state.neutral += value) });
+      this.setState(state => ({
+        neutral: state.neutral + 1,
+      }));
     }
     if (evt.target.textContent === 'Bad') {
-      this.setState({ bad: (this.state.bad += value) });
+      this.setState(state => ({
+        bad: state.bad + 1,
+      }));
     }
     this.totalStatsQuantisty();
     this.getPositiveFeedbackPercentage();
